@@ -9,7 +9,6 @@ function compress() {
     'Packages/*/*/Resources/Public/**/*.js',
     'Packages/*/*/Resources/Public/**/*.css'
   ])
-    .pipe(zopfli())
     .pipe(gulp.dest(function(file) {
       return file.base;
     }));

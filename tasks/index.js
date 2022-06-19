@@ -13,7 +13,7 @@ let task = {
 };
 
 
-for (let taskName of ['clean', 'css', 'js', 'jsLint', 'scssLint', 'fonts', 'images', 'optimizeImages', 'static', 'svgSprite', 'globalBrotli', 'globalZopfli']) {
+for (let taskName of ['clean', 'css', 'js', 'jsLint', 'scssLint', 'fonts', 'images', 'optimizeImages', 'static', 'svgSprite', 'globalBrotli']) {
   let func = require('./' + taskName);
   if (typeof func !== 'function') {
     func = task.noop;
@@ -74,8 +74,8 @@ if (config.tasks.svgSprite) {
   gulp.task('sprite').description = 'Create SVG Sprite';
 }
 if (config.tasks.compress.enabled) {
-  gulp.task('compress', bach.parallel(task.globalBrotli, task.globalZopfli));
-  gulp.task('compress').description = 'Compress all CSS/JS with Brotli and Zopfli';
+  gulp.task('compress', task.globalBrotli);
+  gulp.task('compress').description = 'Compress all CSS/JS with Brotli';
 }
 
 
